@@ -6,7 +6,9 @@ module.exports = function(grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		jsDir: '_assets/js/',
+		JsCorDir: '_assets/js/core/',
+		JsMiscDir: '_assets/js/misc/',
+		JsStartDir: '_assets/js/startup/',
 		jsPubDir: 'build/_assets/js/',
 		cssDir: '_assets/css/',
 		cssPubDir: 'build/_assets/css/',
@@ -42,19 +44,34 @@ module.exports = function(grunt) {
 		uglify: {
 			build: {
 				files: {
-					'<%= jsPubDir %>main.<%= pkg.name %>.min.js' : ['<%= jsDir %>**/*.js']
+					'<%= jsPubDir %>core.<%= pkg.name %>.min.js' : ['<%= JsCorDir %>**/*.js'],
+					'<%= jsPubDir %>misc.<%= pkg.name %>.min.js' : ['<%= JsMiscDir %>**/*.js'],
+					'<%= JsStartDir %>startup.<%= pkg.name %>.min.js' : ['<%= JsStartDir %>**/*.js']
 				}
 			}
 		},
 
+		jshint: {
+			files: ['<%= JsCorDir %>**/*.js %>', '<%= JsMiscDir %>**/*.js', '<%= JsStartDir %>'],
+
+			options: {
+				globals: {
+					jQuery: true,
+					console: true
+				}
+			}
+
+		},
+
 		watch: {
 			css: {
+				options: { livereload: true },
 				files: ['_assets/sass/**/*.scss'],
 				tasks: ['buildcss']
 			},
 			js: {
 				files: ['/_assets/js/**/*.js'],
-				tasks: ['uglify']
+				tasks: ['jshint','uglify']
 			}
 		}
 
@@ -63,6 +80,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', []);
 
 	grunt.registerTask('buildcss', ["sass", "cssc", "cssmin"]);
+
+	grunt.registerTask('watch', ["watch"]);
 
 	grunt.registerTask('buildjs', ["uglify"]);
 

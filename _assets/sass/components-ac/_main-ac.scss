@@ -14,13 +14,13 @@ html, body {
 }
 
 body {
-  background-color: #FFF;
+  background-color: $light-grey;
   overflow: hidden;
   font-family: "Trebuchet MS";
 }
 
 h1 {
-  color: $orange;
+  color: lighten($tardis, 5%%);
   font-size: 1.25em;
 }
 
@@ -28,47 +28,60 @@ header {
   width: 100%;
 }
 
-  nav {
-   @include linear-gradient($grey, $off-white);
-  ul {
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-     @include linear-gradient($grey, $off-white);
-     ul {
-        display:none;
-        li {
-          a {
-            padding: 15px;
-            background-color: $grey;
-          }
-        }
-     }
-  }
-    li {
-      margin: 0 auto;
-      display: inline-block;
-      background-color: $grey;
-      @include linear-gradient($grey, $off-white);
-      border-right:$regular_border;
-      &:hover > ul {
-        display: block;
-      }
-      &:last-child {
-        border-right:none;
-      }
-    }
-
+nav {
+background-color: $off-white;
+@include linear-gradient($white, $light-grey);
+ul {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  //background-color: $off-white;
+  //@include linear-gradient($white, $light-grey);
+  li {
     a {
-      display: block;
-      padding: 6px 12px;
-      text-decoration: none;
-      text-align: center;
-      &:hover {
-        color:$red;
+      padding: 15px;
+      form {
+        margin: 0 auto;
       }
     }
   }
+   ul {
+      display:none;
+      li {
+        a {
+          padding: 15px 15px 15px 15px;
+        }
+      }
+   }
+}
+
+li {
+    margin: 0 auto;
+    display: inline-block;
+    //background-color: $off-white;
+    //@include linear-gradient($white, $light-grey);
+    border-right:$regular_border;
+    &:hover > ul {
+      display: block;
+    }
+    &:last-child {
+      border-right:none;
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: darken($tardis-light, 10%);
+    &:hover {
+      color:$red;
+    }
+    &:visited {
+      color: $tardis-light;
+    }
+  }
+}
 
 form {
   .row {
@@ -83,12 +96,44 @@ form {
   }
 }
 
+form {
+  input {
+    width: 100%;
+    border-radius: 6px;
+  }
+}
+
+#swiping {
+  background-color: $tardis;
+  max-width: 100%;
+  box-shadow: $top-bottom-shadow;
+  .swiper-slide {
+    background-color: $light-grey;
+  }
+}
+
+.info-box {
+  background-color: $off-white;
+}
+
 .special {
   display:none;
 }
 
+.large-1-5 {
+  width: 12.5%;
+}
+
+.space-top {
+  padding-top: 1em;
+}
+
+#search {
+  padding: 15px 0px 0px 0px;
+}
+
 footer {
-  background-color: $light_grey;
+  background-color: $med-grey;
   box-shadow: $inner-shadow;
   width: 100%;
   box-sizing: border-box;

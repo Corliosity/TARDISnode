@@ -1,6 +1,25 @@
 extends ./layout/layout
 block content
-	section(class="row")
-		div(class="column")
+	section(class="row"): div(class="column"): div(class="row")
 			div(class="large-12 columns")
-				h1 Hello World
+				h1 Mile Hi Who
+	section(id="swiping", class="row"): div(class="column"): div(class="row")
+		div(class="large-12 columns")
+			div(class="swiper-container"): div(class="swiper-wrapper")
+				div(class="swiper-slide")
+					h3 Hello World
+				div(class="swiper-slide")
+					h3 Hello World 22
+				div(class="swiper-slide")
+					h3 Hello World 33
+	section(class="row space-top"): div(class="column"): div(class="row")
+		div(class="large-3 columns info-box")
+			h3 Hello
+		div(class="large-1-5 columns")
+			&nbsp;
+		div(class="large-3 columns info-box")
+			h3 Hello
+		div(class="large-1-5 columns")
+			&nbsp;
+		div(class="large-3 columns info-box")
+			h3 Hello
