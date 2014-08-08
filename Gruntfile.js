@@ -9,6 +9,7 @@ module.exports = function(grunt) {
 		JsCorDir: '_assets/js/core/',
 		JsMiscDir: '_assets/js/misc/',
 		JsStartDir: '_assets/js/startup/',
+		jsDir: '_assets/js/',
 		jsPubDir: 'build/_assets/js/',
 		cssDir: '_assets/css/',
 		cssPubDir: 'build/_assets/css/',
@@ -47,6 +48,7 @@ module.exports = function(grunt) {
 					'<%= jsPubDir %>core.<%= pkg.name %>.min.js' : ['<%= JsCorDir %>**/*.js'],
 					'<%= jsPubDir %>misc.<%= pkg.name %>.min.js' : ['<%= JsMiscDir %>**/*.js'],
 					'<%= JsStartDir %>startup.<%= pkg.name %>.min.js' : ['<%= JsStartDir %>**/*.js']
+
 				}
 			}
 		},

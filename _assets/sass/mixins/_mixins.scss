@@ -32,6 +32,7 @@
   -moz-border-radius: $rounded-corner-radius;
   -ms-border-radius: $rounded-corner-radius;
   border-radius: $rounded-corner-radius;
+<<<<<<< HEAD
 }
 
 @mixin linear-gradient($fromColor, $toColor) {
@@ -43,4 +44,6 @@
   background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
   background-image:         linear-gradient(top, $fromColor, $toColor);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+=======
+>>>>>>> b69da7d053d78e9eabd8b7dbab5a652e700bbfb7
 }
