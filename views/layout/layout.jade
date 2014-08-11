@@ -5,11 +5,10 @@ html
 		header
 			nav: ul(class="row")
 				li(class="large-2 columns"): a(href='/') Home
-				li(class="large-2 columns"): a(href='#') Meetups
+				li(class="large-2 columns"): a(href='/meet') Meetups
 				li(class="large-2 columns"): a(href='#') Podcast
-				li(class="large-2 columns"): a(href='#') Calendar
-				li(class="large-2 columns"): a(href='#') About
-				li(class="large-2 columns"): a(id="search" href='#')
+				li(class="large-2 columns"): a(href='/about', title="About Mile Hi Who") About
+				li(class="large-4 columns")
 					form: input(placeholder="search")
 		block content
 		include footer

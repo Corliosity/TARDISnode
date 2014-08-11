@@ -1,5 +1,5 @@
-@import "./mixins/_mixins";
-@import "components-ac/_variables-ac";
+@import "../mixins/_mixins";
+@import "_variables-ac";
 
 $font-family: Arial, Helvetica, sans-serif;
 $color1: #bf4330;
@@ -35,15 +35,18 @@ ul {
   margin: 0 auto;
   padding: 0;
   list-style: none;
-  //background-color: $off-white;
-  //@include linear-gradient($white, $light-grey);
   li {
     a {
       padding: 15px;
       form {
         margin: 0 auto;
       }
+      background-color:transparent;
     }
+    &:hover {
+      color: $red;
+    }
+    background-color: transparent;
   }
    ul {
       display:none;
@@ -58,14 +61,13 @@ ul {
 li {
     margin: 0 auto;
     display: inline-block;
-    //background-color: $off-white;
-    //@include linear-gradient($white, $light-grey);
-    border-right:$regular_border;
     &:hover > ul {
       display: block;
     }
     &:last-child {
       border-right:none;
+      background-color: transparent;
+      border: none;
     }
   }
 
@@ -77,80 +79,22 @@ li {
     &:hover {
       color:$red;
     }
-    &:visited {
-      color: $tardis-light;
-    }
   }
-}
   color: $orange;
   font-size: 1.25em;
 }
 
-.mainContent {
+.main-content {
+  background-color: $light-white;
+  box-shadow: $standout-shadow;
 }
 
-nav {
-    width: 100%;
-     //@include background-image(linear-gradient(white, #cccccc, #eaeaea));
-    ul {
-      margin: 0 auto;
-      padding: 0;
-      list-style: none;
-       //@include background-image(linear-gradient(white, #cccccc, #eaeaea));
-       ul {
-          display:none;
-          li {
-            a {
-              padding: 15px;
-              background-color: $light_grey;
-            }
-          }
-       }
-    }
-
-
-    li {
-      margin: 0 auto;
-      display: inline-block;
-      background-color: $light_grey;
-      //@include background-image(linear-gradient(white, #cccccc, #eaeaea));
-      border-right:$regular_border;
-      box-shadow:$regular_shadow;
-      &:hover > ul {
-        display: block;
-      }
-    }
-
-    a {
-      display: block;
-      padding: 6px 12px;
-      text-decoration: none;
-      text-align: center;
-      &:hover {
-        color:$red;
-      }
-    }
-  }
->>>>>>> b69da7d053d78e9eabd8b7dbab5a652e700bbfb7
-
-form {
-  .row {
-    padding-top: emCalc(16);
-    .large-3 {
-      text-align: right;
-      padding-top: 5px;
-    }
-    input {
-      width: 100%;
-    }
-  }
-}
 
 form {
   input {
-    width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
   }
+  padding: 0.5em;
 }
 
 #swiping {
@@ -163,16 +107,20 @@ form {
 }
 
 .info-box {
-  background-color: $off-white;
+  background-color: $light-white;
 }
 
 .special {
   display:none;
 }
 
-<<<<<<< HEAD
 .large-1-5 {
   width: 12.5%;
+}
+
+.space {
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .space-top {

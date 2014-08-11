@@ -10,9 +10,9 @@ module.exports = function(grunt) {
 		JsMiscDir: '_assets/js/misc/',
 		JsStartDir: '_assets/js/startup/',
 		jsDir: '_assets/js/',
-		jsPubDir: 'build/_assets/js/',
+		jsPubDir: 'publish/_assets/js/',
 		cssDir: '_assets/css/',
-		cssPubDir: 'build/_assets/css/',
+		cssPubDir: 'publish/_assets/css/',
 
 		cssc: {
 			build: {
@@ -67,9 +67,8 @@ module.exports = function(grunt) {
 
 		watch: {
 			css: {
-				options: { livereload: true },
 				files: ['_assets/sass/**/*.scss'],
-				tasks: ['buildcss']
+				tasks: ['compile']
 			},
 			js: {
 				files: ['/_assets/js/**/*.js'],
@@ -81,9 +80,9 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', []);
 
-	grunt.registerTask('buildcss', ["sass", "cssc", "cssmin"]);
+	grunt.registerTask('compile', ["sass", "cssc"]);
 
-	grunt.registerTask('watch', ["watch"]);
+	grunt.registerTask('buildcss', ["sass", "cssc"]);
 
 	grunt.registerTask('buildjs', ["uglify"]);
 

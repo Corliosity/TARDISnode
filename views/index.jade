@@ -13,13 +13,25 @@ block content
 				div(class="swiper-slide")
 					h3 Hello World 33
 	section(class="row space-top"): div(class="column"): div(class="row")
+		div(class="large-12 columns main-content")
+			h2 Mile Hi Who
+	section(class="row space-top"): div(class="column"): div(class="row")
 		div(class="large-3 columns info-box")
 			h3 Hello
 		div(class="large-1-5 columns")
-			&nbsp;
+			p &nbsp;
 		div(class="large-3 columns info-box")
 			h3 Hello
 		div(class="large-1-5 columns")
-			&nbsp;
+			p &nbsp;
 		div(class="large-3 columns info-box")
 			h3 Hello
+	script(type="text/javascript").
+		window.onload = function() {
+		  var mySwiper = new Swiper('.swiper-container',{
+		    //Your options here:
+		    mode:'horizontal',
+		    loop: true
+		    //etc..
+		  });
+		}

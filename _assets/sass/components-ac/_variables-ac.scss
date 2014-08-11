@@ -11,6 +11,7 @@ $orange: #FF8100;
 $green: #25d500;
 $white: #FFFFFF;
 $off-white: #FFFFF9;
+$light-white: #EAEAEA;
 $off_black: #333333;
 $grey: #666666;
 $med-grey: #999999;
@@ -43,6 +44,8 @@ $regular_shadow: 1px 0px 1px $off_black;
 $long_shadow: 3px 0px 5px $black;
 $inner_shadow: 3px 0px 3px $off_black inset;
 $box_shadow: inset 0 6px 7px -7px #aaa;
+$standout-shadow: 3px 5px 10px $off_black;
+
 /*
 	Borders
 */
