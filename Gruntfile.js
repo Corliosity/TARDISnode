@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: ['/_assets/js/**/*.js'],
-				tasks: ['jshint','uglify']
+				tasks: ['jshint']
 			}
 		}
 

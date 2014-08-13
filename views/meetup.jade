@@ -7,5 +7,9 @@ block content
 		div(class="large-12 columns")
 			h3 Image of Mile Hi Whovians
 	section(class="row space-top"): div(class="column"): div(class="row")
-		div(class="large-12 columns main-content")
-			h2 Meetups
+		div(class="large-12 columns main-content", id="template")
+			script(type="text/template", id="groupsTemplate")
+				|	<div class="group">
+				|		<h3><%= group[0].name %></h3>
+				|		<p class="text"><%= group[0].description %></p>
+				|	</div>
