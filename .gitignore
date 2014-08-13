@@ -1,0 +1,7 @@
+# The following Files should be ignored
+# Right now we are ignoring file caching and hidden files created by the 
+# OS
+
+.DS_Store
+.sass-cache
+node_modules
