@@ -3,19 +3,7 @@ var meetupAPIKEY = 'c794164d5046a6b1550153b5f5c6';
 var OAUTHKEY = 'bq7457keoj0d5gdm3c403hcc7f';
 var OAUTHSECRET = '1075aqn4lhia9p5hsao0edhqrt';
 
-var Meetup = Backbone.Model.extend({
-
-	defaults: {
-		name: '',
-		city: '',
-		description: ''
-	},
-
-	initialize: function() {
-		console.log("Model has been initialized");
-	}
-
-});
+var Meetup = Backbone.Model.extend();
 
 var Groups = Backbone.Collection.extend({
 	
@@ -23,8 +11,71 @@ var Groups = Backbone.Collection.extend({
 
 	url : getMeetupData('groups'),
 
+	parse : function (resp) {
+		return resp.results;
+	},
+
+	sync: function(method, model, options) {
+            var that = this;
+                var params = _.extend({
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    url: that.url,
+                    processData: false
+                }, options);
+
+            return $.ajax(params);
+        }
+
+});
+
+var Event = Backbone.Model.extend();
+
+var Events = Backbone.Collection.extend({
+
+	Model : Event,
+
+	url : getMeetupData('events'),
+
 	parse : function (resp, xhr) {
 		return resp.results;
+	},
+
+	sync: function(method, model, options) {
+        var that = this;
+            var params = _.extend({
+                type: 'GET',
+                dataType: 'jsonp',
+                url: that.url,
+                processData: false
+            }, options);
+
+        return $.ajax(params);
+    }
+
+});
+
+var EventsView = Backbone.View.extend({
+
+	initialize: function() {
+		_.bindAll(this, 'render');
+
+		this.collection = new Events;
+		var that = this;
+
+		this.collection.fetch({
+			success: function() {
+				return that.render();
+			}
+		});
+	},
+
+	template: _.template($('#eventsTemplate').html()),
+
+	render: function() {
+		var myEvent = this.collection.toJSON();
+		console.log(myEvent);
+		$(this.el).append(this.template({ events: this.collection.toJSON() }));
 	}
 
 });
@@ -43,15 +94,14 @@ var GroupsView = Backbone.View.extend({
         }
       });
     },
-    // Use an extern template
+    // Use an external template
     template: _.template($('#groupsTemplate').html()),
     
     render: function() {
         // Fill the html with the template and the collection
         //$(this.el).html(this.template({ tweets: this.collection.toJSON() }));
     	var myGroup = this.collection.toJSON();
-    	console.log(myGroup[0].name);
-    	$(this.el).html(this.template({ group: this.collection.toJSON() }));
+    	$(this.el).append(this.template({ group: this.collection.toJSON() }));
     	//$(this.el).html(this.template({ group: "My name is...." }));
     }
     
@@ -75,6 +125,9 @@ function getMeetupData(purpose) {
 	return completeURL;
 }
 
+var appEvents = new EventsView({
+	el: $('#templateEvent')
+});
 
 var app = new GroupsView({
 	el: $('#template')

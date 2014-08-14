@@ -131,6 +131,10 @@ form {
   padding: 15px 0px 0px 0px;
 }
 
+#templateEvent {
+  overflow: auto;
+}
+
 footer {
   background-color: $med-grey;
   box-shadow: $inner-shadow;

@@ -13,3 +13,12 @@ block content
 				|		<h3><%= group[0].name %></h3>
 				|		<p class="text"><%= group[0].description %></p>
 				|	</div>
+	section(class="row space-top"): div(class="column"): div(class="row")
+		div(class="large-12 columns main-content", id="templateEvent")
+			script(type="text/template", id="eventsTemplate")
+				<% _.each(events, function(event){ %>
+				|	<div class="event">
+				|		<h3><%= event.name %></h3>
+				|		<%= event.description %>
+				|	</div>
+				<% }); %>
