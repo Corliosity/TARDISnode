@@ -9,9 +9,11 @@ module.exports = function(grunt) {
 		JsCorDir: '_assets/js/core/',
 		JsMiscDir: '_assets/js/misc/',
 		JsStartDir: '_assets/js/startup/',
+		JsAppDir: '_assets/js/app/',
 		jsDir: '_assets/js/',
 		jsPubDir: 'publish/_assets/js/',
 		cssDir: '_assets/css/',
+		sassDir: '_assets/sass/',
 		cssPubDir: 'publish/_assets/css/',
 
 		cssc: {
@@ -35,6 +37,16 @@ module.exports = function(grunt) {
 		},
 
 		sass: {
+			dev: {
+				options: {
+					style: 'expanded',
+					check: true,
+					lineNumbers: true
+				},
+				files: {
+					'_assets/css/main.css' : '_assets/sass/main.scss'
+				}
+			},
 			build: {
 				files: {
 					'_assets/css/main.css' : '_assets/sass/main.scss'
@@ -48,30 +60,23 @@ module.exports = function(grunt) {
 					'<%= jsPubDir %>core.<%= pkg.name %>.min.js' : ['<%= JsCorDir %>**/*.js'],
 					'<%= jsPubDir %>misc.<%= pkg.name %>.min.js' : ['<%= JsMiscDir %>**/*.js'],
 					'<%= JsStartDir %>startup.<%= pkg.name %>.min.js' : ['<%= JsStartDir %>**/*.js']
-
 				}
 			}
 		},
-
+		//Only want to JS Lint the Application directory since all other files
+		// are libraries and would throw unnecssary errors
 		jshint: {
-			files: ['<%= JsCorDir %>**/*.js %>', '<%= JsMiscDir %>**/*.js', '<%= JsStartDir %>'],
-
-			options: {
-				globals: {
-					jQuery: true,
-					console: true
-				}
-			}
+			all: ['<%= JsAppDir %>**/*.js']
 
 		},
 
 		watch: {
 			css: {
-				files: ['_assets/sass/**/*.scss'],
+				files: ['<%= sassDir %>**/*.scss'],
 				tasks: ['compile']
 			},
 			js: {
-				files: ['/_assets/js/**/*.js'],
+				files: ['<%= JsAppDir %>**/*.js'],
 				tasks: ['jshint']
 			}
 		}
@@ -80,12 +85,10 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', []);
 
-	grunt.registerTask('compile', ["sass", "cssc"]);
+	grunt.registerTask('compile', ["sass:dev"]);
 
-	grunt.registerTask('buildcss', ["sass", "cssc"]);
+	grunt.registerTask('lint', ["jshint"]);
 
-	grunt.registerTask('buildjs', ["uglify"]);
-
-	grunt.registerTask('build', ["uglify", "sass", "cssc", "cssmin"]);
+	grunt.registerTask('build', ["uglify", "sass:build", "cssc", "cssmin"]);
 
 };

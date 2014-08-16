@@ -60,7 +60,7 @@ var EventsView = Backbone.View.extend({
 	initialize: function() {
 		_.bindAll(this, 'render');
 
-		this.collection = new Events;
+		this.collection = new Events();
 		var that = this;
 
 		this.collection.fetch({
@@ -85,7 +85,7 @@ var GroupsView = Backbone.View.extend({
 	initialize: function() {
       _.bindAll(this, 'render');
       // create a collection
-      this.collection = new Groups;
+      this.collection = new Groups();
       // Fetch the collection and call render() method
       var that = this;
       this.collection.fetch({
@@ -115,7 +115,7 @@ var GroupsView = Backbone.View.extend({
 function getMeetupData(purpose) {
 
 	var baseURL = 'https://api.meetup.com/2/';
-	var apiRequest = purpose
+	var apiRequest = purpose;
 	var parameterBASE = '&sign=true&photo-host=public&group_urlname=Mile-High-Who&callback=?';
 	var KEY = 'key=' + meetupAPIKEY;
 
