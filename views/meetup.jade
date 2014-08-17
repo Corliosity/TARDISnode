@@ -3,22 +3,32 @@ block content
 	section(class="row"): div(class="column"): div(class="row")
 			div(class="large-12 columns")
 				h1 Mile Hi Who
-	section(id="swiping", class="row"): div(class="column"): div(class="row")
-		div(class="large-12 columns")
-			h3 Image of Mile Hi Whovians
-	section(class="row space-top"): div(class="column"): div(class="row")
-		div(class="large-12 columns main-content", id="template")
-			script(type="text/template", id="groupsTemplate")
-				|	<div class="group">
-				|		<h3><%= group[0].name %></h3>
-				|		<p class="text"><%= group[0].description %></p>
-				|	</div>
-	section(class="row space-top"): div(class="column"): div(class="row")
+	//
+		section(class="row space-top"): div(class="column"): div(class="row")
+			div(class="large-12 columns main-content", id="template")
+	section(id="template")
+	script(type="text/template", id="groupsTemplate")
+		section(id="swiping", class="row"): div(class="column"): div(class="row")
+			div(class="large-3 large-centered columns")
+				|<img id="groupPhoto" src='<%= group[0].group_photo.highres_link %>' />
+		section(class="row space"): div(class="column")
+			nav(class="backboneNav"): ul
+				li(class="large-3 columns") About the Group
+				li(class="large-3 columns") Upcoming Events
+				li(class="large-3 pull-3 columns") Members
+			.large-12.columns.main-content.group
+				h3 <%= group[0].name %>
+				p.text <%= group[0].description %>
+	section(class="row ajaxSpacing"): div(class="column"): div(class="row")
 		div(class="large-12 columns main-content", id="templateEvent")
 			script(type="text/template", id="eventsTemplate")
 				<% _.each(events, function(event){ %>
-				|	<div class="event">
-				|		<h3><%= event.name %></h3>
-				|		<%= event.description %>
+				|	<div class="events">
+				|		<h3><%= event.name %></h3><p>
+				|		<%= new Date(event.time).toDateString()  %>
+				|		<%= new Date(event.time).toLocaleTimeString() %>
+				|		&nbsp;<%= event.venue.name %></p>
+				|		<button data-event-id='<%= event.id %>'>See More</button>
+				|		<span><p><%= event.description %></p></span>
 				|	</div>
 				<% }); %>

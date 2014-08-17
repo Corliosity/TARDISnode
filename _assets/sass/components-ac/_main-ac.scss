@@ -7,16 +7,12 @@ $color2: #39acef;
 $color2: #bef56e;
 
 html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
 }
 
 body {
   background-color: $light-grey;
-  overflow: hidden;
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -98,7 +94,7 @@ form {
 }
 
 #swiping {
-  background-color: $tardis;
+  background-color: lighten($tardis, 25%);
   max-width: 100%;
   box-shadow: $top-bottom-shadow;
   .swiper-slide {
@@ -127,29 +123,44 @@ form {
   padding-top: 1em;
 }
 
+.space {
+  padding: 1em 0 1em;
+}
+
+.ajaxSpacing {
+  padding:1em 0 1em;
+  margin-bottom: 3em;
+}
+
+nav.backboneNav {
+  background-color: #cccccc;
+  background-image: none;
+  padding-bottom: 1em;
+}
+
+.backboneNav ul {
+  background-color: transparent;
+  padding-bottom: 1em;
+}
+
 #search {
   padding: 15px 0px 0px 0px;
 }
 
-#templateEvent {
-  overflow: auto;
-}
-
-footer {
+.row.footer {
   background-color: $med-grey;
   box-shadow: $inner-shadow;
-  width: 100%;
   box-sizing: border-box;
   clear: both;
   position: fixed;
   min-height: 3em;
-  bottom: 0;
   margin-top:3em;
   padding-top: 0.8em;
+  bottom: 0;
+  max-width:100%;
 }
 
 img {
-  padding: 50px;
+  width: 100%;
+  height: auto;
 }
-
-

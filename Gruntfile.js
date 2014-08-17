@@ -18,11 +18,6 @@ module.exports = function(grunt) {
 
 		cssc: {
 			build: {
-				options: {
-					consolidateViaDeclarations: true,
-					consolidateViaSelectors: true,
-					consolidateMediaQueries: true
-				},
 				files: {
 					'_assets/css/main.css' : '_assets/css/main.css'
 				}
@@ -42,9 +37,6 @@ module.exports = function(grunt) {
 					style: 'expanded',
 					check: true,
 					lineNumbers: true
-				},
-				files: {
-					'_assets/css/main.css' : '_assets/sass/main.scss'
 				}
 			},
 			build: {
@@ -69,7 +61,7 @@ module.exports = function(grunt) {
 			all: ['<%= JsAppDir %>**/*.js']
 
 		},
-
+		clean: ["<%= cssDir %>main.css"],
 		watch: {
 			css: {
 				files: ['<%= sassDir %>**/*.scss'],
@@ -85,10 +77,10 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', []);
 
-	grunt.registerTask('compile', ["sass:dev"]);
+	grunt.registerTask('compile', ["clean","sass"]);
 
 	grunt.registerTask('lint', ["jshint"]);
 
-	grunt.registerTask('build', ["uglify", "sass:build", "cssc", "cssmin"]);
+	grunt.registerTask('build', ["clean","uglify", "sass:build", "cssc", "cssmin"]);
 
 };
