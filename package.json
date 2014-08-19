@@ -23,6 +23,12 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-cssc": "~0.2.6",
     "grunt-htmlhint": "~0.4.1",
+    "grunt-mocha": "^0.4.11",
+    "grunt-simple-mocha": "^0.4.0",
     "matchdep": "~0.3.0"
+  },
+  "repository" : {
+    "name" : "GitHub",
+    "url"  : "http://github.com/corliosity/TARDISnode"
   }
 }
