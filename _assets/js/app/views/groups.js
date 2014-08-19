@@ -1,5 +1,7 @@
 var GroupsView = Backbone.View.extend({
 	
+  el: $('#template'),
+
 	initialize: function() {
       _.bindAll(this, 'render');
       // create a collection

@@ -95,11 +95,7 @@ module.exports = function(grunt) {
 		// Jshint task is set up with the watch command, once a change is made the file will
 		// be automatically linted and checked for errors.
 		jshint: {
-			files: ['Gruntfile.js','<%= configs.JsAppDir %>**/*.js'],
-			options: {
-				maxlen: 80,
-				reporterOutput: 'jshintOutput.xml'
-			}
+			files: ['Gruntfile.js','<%= configs.JsAppDir %>**/*.js']
 		},
 
 

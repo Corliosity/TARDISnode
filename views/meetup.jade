@@ -3,19 +3,17 @@ block content
 	section(class="row"): div(class="column"): div(class="row")
 			div(class="large-12 columns")
 				h1 Mile Hi Who
-	//
-		section(class="row space-top"): div(class="column"): div(class="row")
-			div(class="large-12 columns main-content", id="template")
+	section(class="row space"): div(class="column")
+		nav(class="backboneNav"): ul
+			li(class="large-3 columns about"): a(href="#about") About the Group
+			li(class="large-3 columns events"): a(href='#events') Upcoming Events
+			li(class="large-3 pull-3 columns"): a(href='#') Members
 	section(id="template")
 	script(type="text/template", id="groupsTemplate")
 		section(id="swiping", class="row"): div(class="column"): div(class="row")
 			div(class="large-3 large-centered columns")
 				|<img id="groupPhoto" src='<%= group[0].group_photo.highres_link %>' />
-		section(class="row space"): div(class="column")
-			nav(class="backboneNav"): ul
-				li(class="large-3 columns") About the Group
-				li(class="large-3 columns") Upcoming Events
-				li(class="large-3 pull-3 columns") Members
+		
 			.large-12.columns.main-content.group
 				h3 <%= group[0].name %>
 				p.text <%= group[0].description %>
